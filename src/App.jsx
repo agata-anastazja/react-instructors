@@ -6,9 +6,9 @@ import './App.css';
 
 const Card =  (props) => {
 	return (
+
   <div style={{margin: '1em'}}>
     <div style={{display: 'inline-block', marginLeft: 10}}>
-      console.log(props)
     	<div style={{fontSize: '1.25em', fontWeight: 'bold'}} >{props.userName}</div>
       <div>{props.points}</div>
     </div>
@@ -23,7 +23,7 @@ class Form extends React.Component {
   }
 	handleSubmit= (event) => {
   	event.preventDefault();
-    this.props.onSubmit([this.state.userName, this.state.points]);
+    this.props.onSubmit(this.state);
   };
 	render() {
   	return (
@@ -54,7 +54,7 @@ const CardList = (props) => {
   <div>
   	{props.cards.map(card =>
     	<div style={{ marginLeft: 10}}>
-    	<div style={{fontSize: '1.25em', fontWeight: 'bold'}} >{card}</div>
+    	<div style={{fontSize: '1.25em', fontWeight: 'bold'}} ><Card  {...card}/></div>
     </div>
     )}
   </div>
