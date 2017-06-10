@@ -52,9 +52,11 @@ class Form extends React.Component {
 const CardList = (props) => {
 	return (
   <div>
-  	{props.cards.map(card =>
-    	<div style={{ marginLeft: 10}}>
-    	<div style={{fontSize: '1.25em', fontWeight: 'bold'}} ><Card  {...card}/></div>
+  	{props.cards.map((card, i) =>
+			<div key={i}>
+	    	<div style={{ marginLeft: 10}}>
+	    	<div style={{fontSize: '1.25em', fontWeight: 'bold'}} ><Card {...card}/></div>
+			</div>
     </div>
     )}
   </div>
