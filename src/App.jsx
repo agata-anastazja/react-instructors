@@ -8,6 +8,7 @@ const Card =  (props) => {
 	return (
   <div style={{margin: '1em'}}>
     <div style={{display: 'inline-block', marginLeft: 10}}>
+      console.log(props)
     	<div style={{fontSize: '1.25em', fontWeight: 'bold'}} >{props.userName}</div>
       <div>{props.points}</div>
     </div>
@@ -22,7 +23,7 @@ class Form extends React.Component {
   }
 	handleSubmit= (event) => {
   	event.preventDefault();
-    this.props.onSubmit(this.state.userName);
+    this.props.onSubmit([this.state.userName, this.state.points]);
   };
 	render() {
   	return (
@@ -64,14 +65,15 @@ const CardList = (props) => {
 
 
 class App extends Component {
-state = {
-  cards: []
-}
-addNewCard = (cardInfo) =>{
-  this.setState(prevState => ({
-    cards: prevState.cards.concat(cardInfo)
-  }));
-};
+  state = {
+    cards: []
+  }
+
+  addNewCard = (cardInfo) =>{
+    this.setState(prevState => ({
+      cards: prevState.cards.concat(cardInfo)
+    }));
+  };
 
   render() {
     return (
