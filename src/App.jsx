@@ -3,53 +3,23 @@ import logo from './logo.svg';
 import './App.css';
 
 
-class Button extends React.Component {
-  render() {
-    return (
-      <button onClick={this.props.onClickFunction }>
-        +1
-      </button>
-    );
-  }
-}
-
-const Result = (props) => {
-	return (
-  	<div> {props.counter} </div>
-  );
-};
-
-// class App extends React.Component {
-// 	state = {counter: 0};
-
-//   incrementCounter = () => {
-//   	this.setState((prevState) => ({
-//       counter: prevState.counter + 1
-//     }))
-//   }
-
-// 	render() {
-//   	return (
-//     	<div>
-//       	<Button onClickFunction={this.incrementCounter}/><Result counter={this.state.counter}/>
-//       </div>
-//     );
-//   };
-
-// }
 
 const Card =  (props) => {
 	return (
   <div style={{margin: '1em'}}>
     <div style={{display: 'inline-block', marginLeft: 10}}>
     	<div style={{fontSize: '1.25em', fontWeight: 'bold'}} >{props.userName}</div>
+      <div>{props.points}</div>
     </div>
   </div>
   );
 };
 
 class Form extends React.Component {
-	state = {userName: ''}
+	state = {
+    userName: '',
+    points: 0
+  }
 	handleSubmit= (event) => {
   	event.preventDefault();
     this.props.onSubmit(this.state.userName);
@@ -57,10 +27,20 @@ class Form extends React.Component {
 	render() {
   	return (
     	<form onSubmit={this.handleSubmit}>
-      	<input type="text"
-        	value = {this.state.userName}
-          onChange={(event) => this.setState({userName : event.target.value})}
-        	placeholder="Instructor username" />
+        <label> Name:
+          <input type="text"
+            value = {this.state.userName}
+            onChange={(event) => this.setState({userName : event.target.value})}
+            placeholder="Instructor username" />
+
+        </label>
+        <label> Points:
+          <input type="text"
+            value = {this.state.points}
+            onChange={(event) => this.setState({points : event.target.value})}
+            placeholder="points of happiness" />
+
+        </label>
         <button type="submit">Add instructor</button>
       </form>
     );
